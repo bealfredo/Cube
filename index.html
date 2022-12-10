@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cube</title>
+
+  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel="stylesheet" href="./assets/style/cubeStyle/stylecube.css">
+
+</head>
+<body id="body">
+
+  <section id="moves">
+    <div>
+      <button id="moveR">R</button>
+      <button id="moveRI">R'</button>
+    </div>
+
+    <div>
+      <button id="moveL">L</button>
+      <button id="moveLI">L'</button>
+    </div>
+
+    <div>
+      <button id="moveU">U</button>
+      <button id="moveUI">U'</button>
+    </div>
+
+    <div>
+      <button id="moveD">D</button>
+      <button id="moveDI">D'</button>
+    </div>
+
+    <div>
+      <button id="moveF">F</button>
+      <button id="moveFI">F'</button>
+    </div>
+
+    <div>
+      <button id="moveB">B</button>
+      <button id="moveBI">B'</button>
+    </div>
+
+    <input type="range" name="" id="" value="-45" min="-360" max="360" oninput="xx(this.value)">
+    <input type="range" name="" id="" value="30" min="-360" max="360" oninput="yy(this.value)">
+
+
+    <div id="randomMoves">
+      <p>RANDOM MOVES</p>
+      <button id="randomMoves1x-button" onclick="randomMoves(1)">1X</button>
+      <div id="randomMoves-manual">
+        <input type="number" id="randomQt" min="0" placeholder="...">
+        <button id="randomQt-button">GO</button>
+      </div>
+    </div>
+
+    <button id="go2GroupExecuteButton">GROUP EXECUTE</button>
+
+    <button id="findSolutionButton">FIND SOLUTION</button>
+    <button id="saveCubeButton">save</button>
+    <button id="go2SavedCubeButton">last save</button>
+  </section>
+  
+
+  <div id="cube">
+    <div id="cube-part-01" class="cube-part-01">
+      <div id="cube-part-01-bottom" mark="1"> <span class="bottomSide1"> <p>1</p></span></div><!--BOTTOM-->
+      <div id="cube-part-01-left" mark="2">   <span class="leftSide9">   <p>9</p></span></div><!--LEFT-->
+      <div id="cube-part-01-back" mark="3">   <span></span></div>
+      <div id="cube-part-01-front" mark="4">  <span class="frontSide7">  <p>7</p></span></div><!--FRONT-->
+      <div id="cube-part-01-right" mark="5">  <span></span></div>
+      <div id="cube-part-01-top" mark="6">    <span></span></div>
+    </div>
+    <div id="cube-part-02" class="cube-part-02">
+      <div id="cube-part-02-bottom" mark="7"> <span class="bottomSide4"> <p>4</p></span></div><!--BOTTOM-->
+      <div id="cube-part-02-left" mark="8">   <span class="leftSide8">   <p>8</p></span></div><!--LEFT-->
+      <div id="cube-part-02-back" mark="9">   <span></span></div>
+      <div id="cube-part-02-front" mark="10">  <span></span></div>
+      <div id="cube-part-02-right" mark="11">  <span></span></div>
+      <div id="cube-part-02-top" mark="12">    <span></span></div>
+    </div>
+    <div id="cube-part-03" class="cube-part-03">
+      <div id="cube-part-03-bottom" mark="13"> <span class="bottomSide7"> <p>7</p></span></div><!--BOTTOM-->
+      <div id="cube-part-03-left" mark="14">   <span class="leftSide7">   <p>7</p></span></div><!--LEFT-->
+      <div id="cube-part-03-back" mark="15">   <span class="backSide9">   <p>9</p></span></div><!--BACK-->
+      <div id="cube-part-03-front" mark="16">  <span></span></div>
+      <div id="cube-part-03-right" mark="17">  <span></span></div>
+      <div id="cube-part-03-top" mark="18">    <span></span></div>
+    </div>
+    <div id="cube-part-04" class="cube-part-04">
+      <div id="cube-part-04-bottom" mark="19"> <span class="bottomSide2"> <p>2</p></span></div><!--BOTTOM-->
+      <div id="cube-part-04-left" mark="20">   <span></span></div>
+      <div id="cube-part-04-back" mark="21">   <span></span></div>
+      <div id="cube-part-04-front" mark="22">  <span class="frontSide8">  <p>8</p></span></div><!--FRONT-->
+      <div id="cube-part-04-right" mark="23">  <span></span></div>
+      <div id="cube-part-04-top" mark="24">    <span></span></div>
+    </div>
+    <div id="cube-part-05" class="cube-part-05">
+      <div id="cube-part-05-bottom" mark="25"> <span class="bottomSide5"> <p>5</p></span></div><!--BOTTOM MIDDLE-->
+      <div id="cube-part-05-left" mark="26">   <span></span></div>
+      <div id="cube-part-05-back" mark="27">   <span></span></div>
+      <div id="cube-part-05-front" mark="28">  <span></span></div>
+      <div id="cube-part-05-right" mark="29">  <span></span></div>
+      <div id="cube-part-05-top" mark="30">    <span></span></div>
+    </div>
+    <div id="cube-part-06" class="cube-part-06">
+      <div id="cube-part-06-bottom" mark="31"> <span class="bottomSide8"> <p>8</p></span></div><!--BOTTOM-->
+      <div id="cube-part-06-left" mark="32">   <span></span></div>
+      <div id="cube-part-06-back" mark="33">   <span class="backSide8">   <p>8</p></span></div><!--BACK-->
+      <div id="cube-part-06-front" mark="34">  <span></span></div>
+      <div id="cube-part-06-right" mark="35">  <span></span></div>
+      <div id="cube-part-06-top" mark="36">    <span></span></div>
+    </div>
+    <div id="cube-part-07" class="cube-part-07">
+      <div id="cube-part-07-bottom" mark="37"> <span class="bottomSide3"> <p>3</p></span></div><!--BOTTOM-->
+      <div id="cube-part-07-left" mark="38">   <span></span></div>
+      <div id="cube-part-07-back" mark="39">   <span></span></div>
+      <div id="cube-part-07-front" mark="40">  <span class="frontSide9">  <p>9</p></span></div><!--FRONT-->
+      <div id="cube-part-07-right" mark="41">  <span class="rightSide7">  <p>7</p></span></div><!--RIGHT-->
+      <div id="cube-part-07-top" mark="42">    <span></span></div>
+    </div>
+    <div id="cube-part-08" class="cube-part-08">
+      <div id="cube-part-08-bottom" mark="43"> <span class="bottomSide6"> <p>6</p></span></div><!--BOTTOM-->
+      <div id="cube-part-08-left" mark="44">   <span></span></div>
+      <div id="cube-part-08-back" mark="45">   <span></span></div>
+      <div id="cube-part-08-front" mark="46">  <span></span></div>
+      <div id="cube-part-08-right" mark="47">  <span class="rightSide8">  <p>8</p></span></div><!--RIGHT-->
+      <div id="cube-part-08-top" mark="48">    <span></span></div>
+    </div>
+    <div id="cube-part-09" class="cube-part-09">
+      <div id="cube-part-09-bottom" mark="49"> <span class="bottomSide9"> <p>9</p></span></div><!--BOTTOM-->
+      <div id="cube-part-09-left" mark="50">   <span></span></div>
+      <div id="cube-part-09-back" mark="51">   <span class="backSide7">   <p>7</p></span></div><!--BACK-->
+      <div id="cube-part-09-front" mark="52">  <span></span></div>
+      <div id="cube-part-09-right" mark="53">  <span class="rightSide9">  <p>9</p></span></div><!--RIGHT-->
+      <div id="cube-part-09-top" mark="54">    <span></span></div>
+    </div>
+    <div id="cube-part-10" class="cube-part-10">
+      <div id="cube-part-10-bottom" mark="55"> <span></span></div>
+      <div id="cube-part-10-left" mark="56">   <span class="leftSide6">  <p>6</p></span></div><!--LEFT-->
+      <div id="cube-part-10-back" mark="57">   <span></span></div>
+      <div id="cube-part-10-front" mark="58">  <span class="frontSide4"> <p>4</p></span></div><!--FRONT-->
+      <div id="cube-part-10-right" mark="59">  <span></span></div>
+      <div id="cube-part-10-top" mark="60">    <span></span></div>
+    </div>
+    <div id="cube-part-11" class="cube-part-11">
+      <div id="cube-part-11-bottom" mark="61"> <span></span></div>
+      <div id="cube-part-11-left" mark="62">   <span class="leftSide5"> <p>5</p></span></div><!--LEFT-->
+      <div id="cube-part-11-back" mark="63">   <span></span></div>
+      <div id="cube-part-11-front" mark="64">  <span></span></div>
+      <div id="cube-part-11-right" mark="65">  <span></span></div>
+      <div id="cube-part-11-top" mark="66">    <span></span></div>
+    </div>
+    <div id="cube-part-12" class="cube-part-12">
+      <div id="cube-part-12-bottom" mark="67"> <span></span></div>
+      <div id="cube-part-12-left" mark="68">   <span class="leftSide4"> <p>4</p></span></div><!--LEFT-->
+      <div id="cube-part-12-back" mark="69">   <span class="backSide6"> <p>6</p></span></div><!--BACK-->
+      <div id="cube-part-12-front" mark="70">  <span></span></div>
+      <div id="cube-part-12-right" mark="71">  <span></span></div>
+      <div id="cube-part-12-top" mark="72">    <span></span></div>
+    </div>
+    <div id="cube-part-13" class="cube-part-13">
+      <div id="cube-part-13-bottom" mark="73"> <span></span></div>
+      <div id="cube-part-13-left" mark="74">   <span></span></div>
+      <div id="cube-part-13-back" mark="75">   <span></span></div>
+      <div id="cube-part-13-front" mark="76">  <span class="frontSide5"> <p>5</p></span></div><!--FRONT MIDDLE-->
+      <div id="cube-part-13-right" mark="77">  <span></span></div>
+      <div id="cube-part-13-top" mark="78">    <span></span></div>
+    </div>
+    <div id="cube-part-14" class="cube-part-14">
+      <div id="cube-part-14-bottom" mark="79"> <span></span></div>
+      <div id="cube-part-14-left" mark="80">   <span></span></div>
+      <div id="cube-part-14-back" mark="81">   <span></span></div>
+      <div id="cube-part-14-front" mark="82">  <span></span></div>
+      <div id="cube-part-14-right" mark="83">  <span></span></div>
+      <div id="cube-part-14-top" mark="84">    <span></span></div>
+    </div>
+    <div id="cube-part-15" class="cube-part-15">
+      <div id="cube-part-15-bottom" mark="85"> <span></span></div>
+      <div id="cube-part-15-left" mark="86">   <span></span></div>
+      <div id="cube-part-15-back" mark="87">   <span class="backSide5"> <p>5</p></span></div><!--BACK-->
+      <div id="cube-part-15-front" mark="88">  <span></span></div>
+      <div id="cube-part-15-right" mark="89">  <span></span></div>
+      <div id="cube-part-15-top" mark="90">    <span></span></div>
+    </div>
+    <div id="cube-part-16" class="cube-part-16">
+      <div id="cube-part-16-bottom" mark="91"> <span></span></div>
+      <div id="cube-part-16-left" mark="92">   <span></span></div>
+      <div id="cube-part-16-back" mark="93">   <span></span></div>
+      <div id="cube-part-16-front" mark="94">  <span class="frontSide6"> <p>6</p></span></div><!--FRONT-->
+      <div id="cube-part-16-right" mark="95">  <span class="rightSide4"> <p>4</p></span></div><!--RIGHT-->
+      <div id="cube-part-16-top" mark="96">    <span></span></div>
+    </div>
+    <div id="cube-part-17" class="cube-part-17">
+      <div id="cube-part-17-bottom" mark="97"> <span></span></div>
+      <div id="cube-part-17-left" mark="98">   <span></span></div>
+      <div id="cube-part-17-back" mark="99">   <span></span></div>
+      <div id="cube-part-17-front" mark="100">  <span></span></div>
+      <div id="cube-part-17-right" mark="101">  <span class="rightSide5"> <p>5</p></span></div><!--RIGHT MIDDLE-->
+      <div id="cube-part-17-top" mark="102">    <span></span></div>
+    </div>
+    <div id="cube-part-18" class="cube-part-18">
+      <div id="cube-part-18-bottom" mark="103"> <span></span></div>
+      <div id="cube-part-18-left" mark="104">   <span></span></div>
+      <div id="cube-part-18-back" mark="105">   <span class="backSide4">  <p>4</p></span></div><!--BACK-->
+      <div id="cube-part-18-front" mark="106">  <span></span></div>
+      <div id="cube-part-18-right" mark="107">  <span class="rightSide6"> <p>6</p></span></div><!--RIGHT-->
+      <div id="cube-part-18-top" mark="108">    <span></span></div>
+    </div>
+    <div id="cube-part-19" class="cube-part-19">
+      <div id="cube-part-19-bottom" mark="109"> <span></span></div>
+      <div id="cube-part-19-left" mark="110">   <span class="leftSide3">  <p>3</p></span></div><!--LEFT-->
+      <div id="cube-part-19-back" mark="111">   <span></span></div>
+      <div id="cube-part-19-front" mark="112">  <span class="frontSide1"> <p>1</p></div><!--FRONT-->
+      <div id="cube-part-19-right" mark="113">  <span></span></div>
+      <div id="cube-part-19-top" mark="114">    <span class="topSide7">   <p>7</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-20" class="cube-part-20">
+      <div id="cube-part-20-bottom" mark="115"> <span></span></div>
+      <div id="cube-part-20-left" mark="116">   <span class="leftSide2"> <p>2</p></span></div><!--LEFT-->
+      <div id="cube-part-20-back" mark="117">   <span></span></div>
+      <div id="cube-part-20-front" mark="118">  <span></span></div>
+      <div id="cube-part-20-right" mark="119">  <span></span></div>
+      <div id="cube-part-20-top" mark="120">    <span class="topSide4"> <p>4</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-21" class="cube-part-21">
+      <div id="cube-part-21-bottom" mark="121"> <span></span></div>
+      <div id="cube-part-21-left" mark="122">   <span class="leftSide1"> <p>1</p></span></div><!--LEFT-->
+      <div id="cube-part-21-back" mark="123">   <span class="backSide3"> <p>3</p></span></div><!--BACK-->
+      <div id="cube-part-21-front" mark="124">  <span></span></div>
+      <div id="cube-part-21-right" mark="125">  <span></span></div>
+      <div id="cube-part-21-top" mark="126">    <span class="topSide1">  <p>1</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-22" class="cube-part-22">
+      <div id="cube-part-22-bottom" mark="127"> <span></span></div>
+      <div id="cube-part-22-left" mark="128">   <span></span></div>
+      <div id="cube-part-22-back" mark="129">   <span></span></div>
+      <div id="cube-part-22-front" mark="130">  <span class="frontSide2"> <p>2</p></span></div><!--FRONT-->
+      <div id="cube-part-22-right" mark="131">  <span></span></div>
+      <div id="cube-part-22-top" mark="132">    <span class="topSide8">   <p>8</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-23" class="cube-part-23">
+      <div id="cube-part-23-bottom" mark="133"> <span></span></div>
+      <div id="cube-part-23-left" mark="134">   <span></span></div>
+      <div id="cube-part-23-back" mark="135">   <span></span></div>
+      <div id="cube-part-23-front" mark="136">  <span></span></div>
+      <div id="cube-part-23-right" mark="137">  <span></span></div>
+      <div id="cube-part-23-top" mark="138">    <span class="topSide5"> <p>5</p></span></div> <!--TOP MIDDLE-->
+    </div>
+    <div id="cube-part-24" class="cube-part-24">
+      <div id="cube-part-24-bottom" mark="139"> <span></span></div>
+      <div id="cube-part-24-left" mark="140">   <span></span></div>
+      <div id="cube-part-24-back" mark="141">   <span class="backSide2"> <p>2</p></span></div><!--BACK-->
+      <div id="cube-part-24-front" mark="142">  <span></span></div>
+      <div id="cube-part-24-right" mark="143">  <span></span></div>
+      <div id="cube-part-24-top" mark="144">    <span class="topSide2">  <p>2</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-25" class="cube-part-25">
+      <div id="cube-part-25-bottom" mark="145"> <span></span></div>
+      <div id="cube-part-25-left" mark="146">   <span></span></div>
+      <div id="cube-part-25-back" mark="147">   <span></span></div>
+      <div id="cube-part-25-front" mark="148">  <span class="frontSide3"> <p>3</p></span></div><!--FRONT-->
+      <div id="cube-part-25-right" mark="149">  <span class="rightSide1"> <p>1</p></span></div><!--RIGHT-->
+      <div id="cube-part-25-top" mark="150">    <span class="topSide9">   <p>9</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-26" class="cube-part-26">
+      <div id="cube-part-26-bottom" mark="151"> <span></span></div>
+      <div id="cube-part-26-left" mark="152">   <span></span></div>
+      <div id="cube-part-26-back" mark="153">   <span></span></div>
+      <div id="cube-part-26-front" mark="154">  <span></span></div>
+      <div id="cube-part-26-right" mark="155">  <span class="rightSide2"> <p>2</p></span></div><!--RIGHT-->
+      <div id="cube-part-26-top" mark="156">    <span class="topSide6">   <p>6</p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-27" class="cube-part-27">
+      <div id="cube-part-27-bottom" mark="157"> <span></span></div>
+      <div id="cube-part-27-left" mark="158">   <span></span></div>
+      <div id="cube-part-27-back" mark="159">   <span class="backSide1">  <p>1</p></span></div><!--BACK-->
+      <div id="cube-part-27-front" mark="160">  <span></span></div>
+      <div id="cube-part-27-right" mark="161">  <span class="rightSide3"> <p>3</p></span></div><!--RIGHT-->
+      <div id="cube-part-27-top" mark="162">    <span class="topSide3">   <p>3</p></span></div> <!--TOP-->
+    </div>
+  </div>
+
+  <section id="cubeState">
+    <p id="cubeState-output" class="right">RIGHT</p>
+  </section>
+
+  <section id="remaining">
+    <p id="remaining-output"></p>
+    <p>REMAINING</p>
+    <button id="remaining-stopButton">STOP</button>
+  </section>
+
+
+  <section id="movesHistoric">
+    <div id="movesHistoric-settings">
+      <button id="undoButton">undo</button>
+      <button id="undoAllButton">undo all</button>
+    </div>
+    <div id="movesHistoric-content">
+    </div>
+  </section>
+
+
+  <section id="movesOptions">
+    <div id="movesOptions-settings">
+      <button id="closeButton-movesOptions">Close</button>
+    </div>
+
+    <div id="movesOptions-content">
+      <div>
+        <div>
+          <button class="buttonOption">R</button>
+          <button class="buttonOption">R'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">L</button>
+          <button class="buttonOption">L'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">U</button>
+          <button class="buttonOption">U'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">D</button>
+          <button class="buttonOption">D'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">F</button>
+          <button class="buttonOption">F'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">B</button>
+          <button class="buttonOption">B'</button>
+        </div>
+      </div>
+
+      <div id="groupExecute">
+        <div id="groupExecute-settings">
+          <p>groupExecute</p>
+          <div>
+            <button id="groupExecute-clearButton">clear</button>
+            <button id="groupExecute-startButton">start</button>
+          </div>
+        </div>
+        <div id="groupExecute-content">
+          <div id="groupExecute-buttonPair"></div>
+        </div>
+      </div>
+      <!-- here will be groupExecuteContent -->
+    </div>
+
+  </section>
+
+  <script src="./assets/script/possibilities.js"></script>
+  <script src="./assets/script/script.js"></script>
+</body>
+</html>

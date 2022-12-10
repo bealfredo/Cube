@@ -1,0 +1,153 @@
+#cube {
+  user-select: none;
+  height: var(--cube-size);
+  width: var(--cube-size);
+
+  transform-style: preserve-3d;
+  transform: rotateX(-45deg) rotateY(30deg);
+
+  --cube-size: 35rem;/*default is 50*/
+  --cube-part-size: calc(var(--cube-size) * 0.33);
+  --cube-part-translate-z: calc(var(--cube-part-size) / 2);
+
+  --color1: white;
+  --color2: orange;
+  --color3: #01d04e;
+  --color4: blue;
+  --color5: red  ;
+  --color6: yellow;
+  --inside: transparent;
+}
+
+#cube:hover { cursor:grab; }
+
+#cube > div {
+  position: absolute;
+  display: block;
+  width: var(--cube-part-size);
+  height: var(--cube-part-size);
+
+  transform-style:preserve-3d;
+
+  transition: transform 1s;
+  visibility: hidden;/*to test*/
+}
+
+#cube > div > div {
+  height: var(--cube-part-size);
+  width: var(--cube-part-size);
+
+  position: absolute;
+
+  opacity: 0.8 !important;
+  border: 5px solid black;
+  background-color: rgb(0, 0, 0) !important;
+
+  text-transform: uppercase;
+  border-radius: 10px;
+  --scale: 1;
+}
+
+#cube > div > div > span {
+  /* background-color: #e9e9e9 !important; */
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(-45deg);
+  border-radius: 10px;
+  transform: scale(var(--scale)) var(--rotate);
+
+  font-size: 9rem;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* filter: brightness(2); */
+  /* box-shadow: inset 0px 0px 10px red; */
+  /* -webkit-background-clip: text; */
+
+  background-size: contain;
+}
+
+#cube > div > div > span > p {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+}
+
+
+#cube > div > div >span[class^="bottomSide"] > * {transform: rotate(-90deg);}
+#cube > div > div > span[class^="leftSide"] > * {transform: rotate(180deg);}
+#cube > div > div > span[class^="backSide"] > * {transform: rotate(-90deg);}
+#cube > div > div > span[class^="frontSide"] > * {transform: rotate(90deg);}
+/* #cube > div > div spa[class^="rightSide"] > * {} */
+#cube > div > div > span[class^="topSide"] > * {transform: rotate(90deg);}
+
+
+/*BOTTOM*/
+/* #cube > div > div > span.bottomSide1 > p {background-image: url(images/bottom1.jpg);}
+#cube > div > div > span.bottomSide2 > p {background-image: url(images/bottom2.jpg);}
+#cube > div > div > span.bottomSide3 > p {background-image: url(images/bottom3.jpg);}
+#cube > div > div > span.bottomSide4 > p {background-image: url(images/bottom4.jpg);}
+#cube > div > div > span.bottomSide5 > p {background-image: url(images/bottom5.jpg);}
+#cube > div > div > span.bottomSide6 > p {background-image: url(images/bottom6.jpg);}
+#cube > div > div > span.bottomSide7 > p {background-image: url(images/bottom7.jpg);}
+#cube > div > div > span.bottomSide8 > p {background-image: url(images/bottom8.jpg);}
+#cube > div > div > span.bottomSide9 > p {background-image: url(images/bottom9.jpg);} */
+
+/*LEFT*/
+/* #cube > div > div > span.leftSide1 > p {background-image: url(images/left1.jpg);}
+#cube > div > div > span.leftSide2 > p {background-image: url(images/left2.jpg);}
+#cube > div > div > span.leftSide3 > p {background-image: url(images/left3.jpg);}
+#cube > div > div > span.leftSide4 > p {background-image: url(images/left4.jpg);}
+#cube > div > div > span.leftSide5 > p {background-image: url(images/left5.jpg);}
+#cube > div > div > span.leftSide6 > p {background-image: url(images/left6.jpg);}
+#cube > div > div > span.leftSide7 > p {background-image: url(images/left7.jpg);}
+#cube > div > div > span.leftSide8 > p {background-image: url(images/left8.jpg);}
+#cube > div > div > span.leftSide9 > p {background-image: url(images/left9.jpg);} */
+
+/*BACK*/
+/* #cube > div > div > span.backSide1 > p {background-image: url(images/back1.jpg);}
+#cube > div > div > span.backSide2 > p {background-image: url(images/back2.jpg);}
+#cube > div > div > span.backSide3 > p {background-image: url(images/back3.jpg);}
+#cube > div > div > span.backSide4 > p {background-image: url(images/back4.jpg);}
+#cube > div > div > span.backSide5 > p {background-image: url(images/back5.jpg);}
+#cube > div > div > span.backSide6 > p {background-image: url(images/back6.jpg);}
+#cube > div > div > span.backSide7 > p {background-image: url(images/back7.jpg);}
+#cube > div > div > span.backSide8 > p {background-image: url(images/back8.jpg);}
+#cube > div > div > span.backSide9 > p {background-image: url(images/back9.jpg);} */
+
+/*FRONT*/
+/* #cube > div > div > span.frontSide1 > p {background-image: url(images/front1.jpg);}
+#cube > div > div > span.frontSide2 > p {background-image: url(images/front2.jpg);}
+#cube > div > div > span.frontSide3 > p {background-image: url(images/front3.jpg);}
+#cube > div > div > span.frontSide4 > p {background-image: url(images/front4.jpg);}
+#cube > div > div > span.frontSide5 > p {background-image: url(images/front5.jpg);}
+#cube > div > div > span.frontSide6 > p {background-image: url(images/front6.jpg);}
+#cube > div > div > span.frontSide7 > p {background-image: url(images/front7.jpg);}
+#cube > div > div > span.frontSide8 > p {background-image: url(images/front8.jpg);}
+#cube > div > div > span.frontSide9 > p {background-image: url(images/front9.jpg);} */
+
+/*RIGHT*/
+/* #cube > div > div > span.rightSide1 > p {background-image: url(images/right1.jpg);}
+#cube > div > div > span.rightSide2 > p {background-image: url(images/right2.jpg);}
+#cube > div > div > span.rightSide3 > p {background-image: url(images/right3.jpg);}
+#cube > div > div > span.rightSide4 > p {background-image: url(images/right4.jpg);}
+#cube > div > div > span.rightSide5 > p {background-image: url(images/right5.jpg);}
+#cube > div > div > span.rightSide6 > p {background-image: url(images/right6.jpg);}
+#cube > div > div > span.rightSide7 > p {background-image: url(images/right7.jpg);}
+#cube > div > div > span.rightSide8 > p {background-image: url(images/right8.jpg);}
+#cube > div > div > span.rightSide9 > p {background-image: url(images/right9.jpg);} */
+
+/*TOP*/
+/* #cube > div > div > span.topSide1 > p {background-image: url(images/top1.jpg);}
+#cube > div > div > span.topSide2 > p {background-image: url(images/top2.jpg);}
+#cube > div > div > span.topSide3 > p {background-image: url(images/top3.jpg);}
+#cube > div > div > span.topSide4 > p {background-image: url(images/top4.jpg);}
+#cube > div > div > span.topSide5 > p {background-image: url(images/top5.jpg);}
+#cube > div > div > span.topSide6 > p {background-image: url(images/top6.jpg);}
+#cube > div > div > span.topSide7 > p {background-image: url(images/top7.jpg);}
+#cube > div > div > span.topSide8 > p {background-image: url(images/top8.jpg);}
+#cube > div > div > span.topSide9 > p {background-image: url(images/top9.jpg);} */
