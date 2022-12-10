@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cube</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body id="body">
+
+  <section id="moves">
+    <div>
+      <button id="moveR">R</button>
+      <button id="moveRI">R'</button>
+    </div>
+
+    <div>
+      <button id="moveL">L</button>
+      <button id="moveLI">L'</button>
+    </div>
+
+    <div>
+      <button id="moveU">U</button>
+      <button id="moveUI">U'</button>
+    </div>
+
+    <div>
+      <button id="moveD">D</button>
+      <button id="moveDI">D'</button>
+    </div>
+
+    <div>
+      <button id="moveF">F</button>
+      <button id="moveFI">F'</button>
+    </div>
+
+    <div>
+      <button id="moveB">B</button>
+      <button id="moveBI">B'</button>
+    </div>
+
+    <input type="range" name="" id="" value="-45" min="-360" max="360" oninput="xx(this.value)">
+    <input type="range" name="" id="" value="30" min="-360" max="360" oninput="yy(this.value)">
+
+
+    <div id="randomMoves">
+      <p>RANDOM MOVES</p>
+      <button id="randomMoves1x-button" onclick="randomMoves(1)">1X</button>
+      <div id="randomMoves-manual">
+        <input type="number" id="randomQt" min="0" placeholder="...">
+        <button id="randomQt-button">GO</button>
+      </div>
+    </div>
+
+    <button id="groupExecute-go2GroupExecuteButton">GROUP EXECUTE</button>
+
+  </section>
+  
+  <div id="cube">
+    <span></span>
+
+    <div id="cube-part-01" class="cube-part-01">
+      <div id="cube-part-01-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-01-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-01-back">   <span></span></div>
+      <div id="cube-part-01-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-01-right">  <span></span></div>
+      <div id="cube-part-01-top">    <span></span></div>
+    </div>
+    <div id="cube-part-02" class="cube-part-02">
+      <div id="cube-part-02-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-02-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-02-back">   <span></span></div>
+      <div id="cube-part-02-front">  <span></span></div>
+      <div id="cube-part-02-right">  <span></span></div>
+      <div id="cube-part-02-top">    <span></span></div>
+    </div>
+    <div id="cube-part-03" class="cube-part-03">
+      <div id="cube-part-03-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-03-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-03-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-03-front">  <span></span></div>
+      <div id="cube-part-03-right">  <span></span></div>
+      <div id="cube-part-03-top">    <span></span></div>
+    </div>
+    <div id="cube-part-04" class="cube-part-04">
+      <div id="cube-part-04-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-04-left">   <span></span></div>
+      <div id="cube-part-04-back">   <span></span></div>
+      <div id="cube-part-04-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-04-right">  <span></span></div>
+      <div id="cube-part-04-top">    <span></span></div>
+    </div>
+    <div id="cube-part-05" class="cube-part-05">
+      <div id="cube-part-05-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM MIDDLE-->
+      <div id="cube-part-05-left">   <span></span></div>
+      <div id="cube-part-05-back">   <span></span></div>
+      <div id="cube-part-05-front">  <span></span></div>
+      <div id="cube-part-05-right">  <span></span></div>
+      <div id="cube-part-05-top">    <span></span></div>
+    </div>
+    <div id="cube-part-06" class="cube-part-06">
+      <div id="cube-part-06-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-06-left">   <span></span></div>
+      <div id="cube-part-06-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-06-front">  <span></span></div>
+      <div id="cube-part-06-right">  <span></span></div>
+      <div id="cube-part-06-top">    <span></span></div>
+    </div>
+    <div id="cube-part-07" class="cube-part-07">
+      <div id="cube-part-07-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-07-left">   <span></span></div>
+      <div id="cube-part-07-back">   <span></span></div>
+      <div id="cube-part-07-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-07-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-07-top">    <span></span></div>
+    </div>
+    <div id="cube-part-08" class="cube-part-08">
+      <div id="cube-part-08-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-08-left">   <span></span></div>
+      <div id="cube-part-08-back">   <span></span></div>
+      <div id="cube-part-08-front">  <span></span></div>
+      <div id="cube-part-08-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-08-top">    <span></span></div>
+    </div>
+    <div id="cube-part-09" class="cube-part-09">
+      <div id="cube-part-09-bottom"> <span class="bottomSide"><p></p></span></div><!--BOTTOM-->
+      <div id="cube-part-09-left">   <span></span></div>
+      <div id="cube-part-09-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-09-front">  <span></span></div>
+      <div id="cube-part-09-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-09-top">    <span></span></div>
+    </div>
+    <div id="cube-part-10" class="cube-part-10">
+      <div id="cube-part-10-bottom"> <span></span></div>
+      <div id="cube-part-10-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-10-back">   <span></span></div>
+      <div id="cube-part-10-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-10-right">  <span></span></div>
+      <div id="cube-part-10-top">    <span></span></div>
+    </div>
+    <div id="cube-part-11" class="cube-part-11">
+      <div id="cube-part-11-bottom"> <span></span></div>
+      <div id="cube-part-11-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-11-back">   <span></span></div>
+      <div id="cube-part-11-front">  <span></span></div>
+      <div id="cube-part-11-right">  <span></span></div>
+      <div id="cube-part-11-top">    <span></span></div>
+    </div>
+    <div id="cube-part-12" class="cube-part-12">
+      <div id="cube-part-12-bottom"> <span></span></div>
+      <div id="cube-part-12-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-12-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-12-front">  <span></span></div>
+      <div id="cube-part-12-right">  <span></span></div>
+      <div id="cube-part-12-top">    <span></span></div>
+    </div>
+    <div id="cube-part-13" class="cube-part-13">
+      <div id="cube-part-13-bottom"> <span></span></div>
+      <div id="cube-part-13-left">   <span></span></div>
+      <div id="cube-part-13-back">   <span></span></div>
+      <div id="cube-part-13-front">  <span class="frontSide"><p></p></span></div><!--FRONT MIDDLE-->
+      <div id="cube-part-13-right">  <span></span></div>
+      <div id="cube-part-13-top">    <span></span></div>
+    </div>
+    <div id="cube-part-14" class="cube-part-14">
+      <div id="cube-part-14-bottom"> <span></span></div>
+      <div id="cube-part-14-left">   <span></span></div>
+      <div id="cube-part-14-back">   <span></span></div>
+      <div id="cube-part-14-front">  <span></span></div>
+      <div id="cube-part-14-right">  <span></span></div>
+      <div id="cube-part-14-top">    <span></span></div>
+    </div>
+    <div id="cube-part-15" class="cube-part-15">
+      <div id="cube-part-15-bottom"> <span></span></div>
+      <div id="cube-part-15-left">   <span></span></div>
+      <div id="cube-part-15-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-15-front">  <span></span></div>
+      <div id="cube-part-15-right">  <span></span></div>
+      <div id="cube-part-15-top">    <span></span></div>
+    </div>
+    <div id="cube-part-16" class="cube-part-16">
+      <div id="cube-part-16-bottom"> <span></span></div>
+      <div id="cube-part-16-left">   <span></span></div>
+      <div id="cube-part-16-back">   <span></span></div>
+      <div id="cube-part-16-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-16-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-16-top">    <span></span></div>
+    </div>
+    <div id="cube-part-17" class="cube-part-17">
+      <div id="cube-part-17-bottom"> <span></span></div>
+      <div id="cube-part-17-left">   <span></span></div>
+      <div id="cube-part-17-back">   <span></span></div>
+      <div id="cube-part-17-front">  <span></span></div>
+      <div id="cube-part-17-right">  <span class="rightSide"></span></div><!--RIGHT MIDDLE-->
+      <div id="cube-part-17-top">    <span></span></div>
+    </div>
+    <div id="cube-part-18" class="cube-part-18">
+      <div id="cube-part-18-bottom"> <span></span></div>
+      <div id="cube-part-18-left">   <span></span></div>
+      <div id="cube-part-18-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-18-front">  <span></span></div>
+      <div id="cube-part-18-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-18-top">    <span></span></div>
+    </div>
+    <div id="cube-part-19" class="cube-part-19">
+      <div id="cube-part-19-bottom"> <span></span></div>
+      <div id="cube-part-19-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-19-back">   <span></span></div>
+      <div id="cube-part-19-front">  <span class="frontSide"><p></p></div><!--FRONT-->
+      <div id="cube-part-19-right">  <span></span></div>
+      <div id="cube-part-19-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-20" class="cube-part-20">
+      <div id="cube-part-20-bottom"> <span></span></div>
+      <div id="cube-part-20-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-20-back">   <span></span></div>
+      <div id="cube-part-20-front">  <span></span></div>
+      <div id="cube-part-20-right">  <span></span></div>
+      <div id="cube-part-20-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-21" class="cube-part-21">
+      <div id="cube-part-21-bottom"> <span></span></div>
+      <div id="cube-part-21-left">   <span class="leftSide"><p></p></span></div><!--LEFT-->
+      <div id="cube-part-21-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-21-front">  <span></span></div>
+      <div id="cube-part-21-right">  <span></span></div>
+      <div id="cube-part-21-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-22" class="cube-part-22">
+      <div id="cube-part-22-bottom"> <span></span></div>
+      <div id="cube-part-22-left">   <span></span></div>
+      <div id="cube-part-22-back">   <span></span></div>
+      <div id="cube-part-22-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-22-right">  <span></span></div>
+      <div id="cube-part-22-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-23" class="cube-part-23">
+      <div id="cube-part-23-bottom"> <span></span></div>
+      <div id="cube-part-23-left">   <span></span></div>
+      <div id="cube-part-23-back">   <span></span></div>
+      <div id="cube-part-23-front">  <span></span></div>
+      <div id="cube-part-23-right">  <span></span></div>
+      <div id="cube-part-23-top">    <span class="topSide"><p></p></span></div> <!--TOP MIDDLE-->
+    </div>
+    <div id="cube-part-24" class="cube-part-24">
+      <div id="cube-part-24-bottom"> <span></span></div>
+      <div id="cube-part-24-left">   <span></span></div>
+      <div id="cube-part-24-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-24-front">  <span></span></div>
+      <div id="cube-part-24-right">  <span></span></div>
+      <div id="cube-part-24-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-25" class="cube-part-25">
+      <div id="cube-part-25-bottom"> <span></span></div>
+      <div id="cube-part-25-left">   <span></span></div>
+      <div id="cube-part-25-back">   <span></span></div>
+      <div id="cube-part-25-front">  <span class="frontSide"><p></p></span></div><!--FRONT-->
+      <div id="cube-part-25-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-25-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-26" class="cube-part-26">
+      <div id="cube-part-26-bottom"> <span></span></div>
+      <div id="cube-part-26-left">   <span></span></div>
+      <div id="cube-part-26-back">   <span></span></div>
+      <div id="cube-part-26-front">  <span></span></div>
+      <div id="cube-part-26-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-26-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+    <div id="cube-part-27" class="cube-part-27">
+      <div id="cube-part-27-bottom"> <span></span></div>
+      <div id="cube-part-27-left">   <span></span></div>
+      <div id="cube-part-27-back">   <span class="backSide"><p></p></span></div><!--BACK-->
+      <div id="cube-part-27-front">  <span></span></div>
+      <div id="cube-part-27-right">  <span class="rightSide"></span></div><!--RIGHT-->
+      <div id="cube-part-27-top">    <span class="topSide"><p></p></span></div> <!--TOP-->
+    </div>
+  </div>
+
+  <section id="remaining">
+    <p id="remaining-output"></p>
+    <p>REMAINING</p>
+    <button id="remaining-stopButton">STOP</button>
+  </section>
+
+  <section id="movesHistoric">
+    <div id="movesHistoric-settings">
+      <button id="undoButton">undo</button>
+      <button id="undoAllButton">undo all</button>
+    </div>
+    <div id="movesHistoric-content">
+    </div>
+  </section>
+
+
+  <section id="movesOptions">
+    <div id="movesOptions-settings">
+      <button id="closeButton-movesOptions">Close</button>
+    </div>
+
+    <div id="movesOptions-content">
+      <div>
+        <div>
+          <button class="buttonOption">R</button>
+          <button class="buttonOption">R'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">L</button>
+          <button class="buttonOption">L'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">U</button>
+          <button class="buttonOption">U'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">D</button>
+          <button class="buttonOption">D'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">F</button>
+          <button class="buttonOption">F'</button>
+        </div>
+    
+        <div>
+          <button class="buttonOption">B</button>
+          <button class="buttonOption">B'</button>
+        </div>
+      </div>
+
+      <div id="groupExecute">
+        <div id="groupExecute-settings">
+          <p>groupExecute</p>
+          <div>
+            <button id="groupExecute-clearButton">clear</button>
+            <button id="groupExecute-startButton">start</button>
+          </div>
+        </div>
+        <div id="groupExecute-content">
+          <div id="groupExecute-buttonPair"></div>
+        </div>
+      </div>
+      <!-- here will be groupExecuteContent -->
+    </div>
+
+  </section>
+
+  <script src="./script.js"></script>
+  <!-- <script src="./possibilities.js"></script> -->
+</body>
+</html>
